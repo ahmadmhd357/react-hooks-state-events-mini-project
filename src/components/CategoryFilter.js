@@ -1,19 +1,38 @@
+import {React} from "react";
 
 
-function CategoryFilter({categories, handlCategoryChange, selectedCategory}) {
+function CategoryFilter({ categories, setTheCategory, theCategory}) {
   
-  
-  const categoriesToDisplay = categories.map((category,index)=>
-      { const classNamee = (category === selectedCategory?'selected':'')
-       console.log(selectedCategory) 
-        
-        return<button   key={index}
-           onClick={()=>handlCategoryChange(category)} className={classNamee}> {category} </button>})
+  // const [ theCategory, setTheCategory ] = useState (" ")
+
+  // const taskCategory = (category) => {
+  //   setTheCategory(category)
+  //   setNewTaskList(taskList.filter((taskk)=> taskk.category === category))
+  //   if (category === "All") {
+  //     setNewTaskList(TASKS)
+  //   }
+  // }
+  function handleCategoryChange (cat){
+    setTheCategory(cat)
+  }
+
+  const categoryList = categories.map((category) =>{
+  const className = category === theCategory? "selected" : '';
+    return (
+      <button key={category}  className={className} onClick={()=>handleCategoryChange(category)}>
+      {category}</button>
+    )
+  })
+
+
   return (
+    <>
     <div className="categories">
       <h5>Category filters</h5>
-      {categoriesToDisplay}
+      {categoryList}
     </div>
+  
+    </>
   );
 }
 

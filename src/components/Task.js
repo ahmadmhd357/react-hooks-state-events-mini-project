@@ -1,13 +1,20 @@
 import React from "react";
 
-function Task({text, category, handlRemoveTask }) {
-  return ( 
-    <div className="task"   >
+
+function Task({text, category, handleRemove}) {
+  
+  
+  const handleRemoveText = () => {
+    handleRemove(text)
+  }
+
+  
+  return (
+    <div className="task">
       <div className="label">{category}</div>
       <div className="text">{text}</div>
-      <button name={text} className="delete" onClick={()=>handlRemoveTask(text)}>X</button>
+      <button className="delete" onClick={handleRemoveText}>X</button>
     </div>
-    
   );
 }
 
